@@ -1,0 +1,407 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+%\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+\usepackage{setspace}
+\onehalfspacing
+
+\usepackage{amsmath}
+\usepackage{commath}
+\usepackage{cancel}
+\usepackage{amssymb}
+\usepackage{mathrsfs}   
+
+\usepackage{wrapfig}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{subfigure}
+\usepackage{float}
+\usepackage{capt-of}
+\usepackage{sidecap}
+	\sidecaptionvpos{figure}{c}
+\usepackage{lmodern}
+
+\usepackage{etoolbox}
+\usepackage{tikz, tkz-euclide}
+\usetikzlibrary{quotes,arrows.meta,angles,calc,shadings,positioning,babel}
+\usetkzobj{all}
+
+
+\makeatletter
+\patchcmd{\tkz@DrawLine}{\begingroup}{\begingroup\makeatletter}{}{}
+\makeatother
+
+\usepackage{anysize}
+\marginsize{2.54cm}{2.54cm}{2.54cm}{2.54cm}
+
+\usepackage{appendix}
+\renewcommand{\appendixname}{Apéndices}
+\renewcommand{\appendixtocname}{Apéndices}
+\renewcommand{\appendixpagename}{Apéndices}
+
+\usepackage[colorlinks=true,plainpages=false,citecolor=blue,linkcolor=blue]{hyperref}
+\newcommand{\sen}{\operatorname{\sen}}
+
+\usepackage{minted}
+\large
+\title{Mecánica Clásica II}
+\begin{document}
+\begin{titlepage}
+	\begin{center}
+    \line(1,0){300}\\
+    [0.65cm]
+	\huge{\bfseries Mecánica Clásica II}\\
+	\line(1,0){300}\\
+	%\textsc{\Large Fundamentos de la Mecánica Clásica}\\
+	\textsc{\LARGE 16 DE JUNIO DE 2020}\\
+	[5.5cm]     
+	\end{center}
+\end{titlepage}
+
+\section{Conceptos fundamentales de la mecánica del punto material}
+\subsection{Punto material}
+Es un cuerpo cuyas dimensiones se pueden despreciar. Esto permite expresar las leyes mecánicas de movimiento.
+\subsection{Movimiento del punto material}
+Es un movimiento espacial en un intervalo de tiempo. El espacio se considera tridimensional de Euclides y se representa con 3 coordenadas: $x$, $y$, $z$; en un sistema de referencia definido. El tiempo se considera homogéneo y continuo, y se representa con la letra "$t$".
+Desde el punto de vista general el espacio y el tiempo se definen como toda forma de existencia de la materia, en el sentido, que, toda forma de materia existe solo en el espacio y en el tiempo.
+La posición de un punto material en el espacio $x$, $y$, $z$ en un momento dado $t$ se describe por las coordenadas del punto material: $x(t),\ y(t),\ z(t)$, o el radio vector: 
+\begin{equation}
+    \overline{r} (t) = x(t) \overline{i} + y(t)\overline{j} + z(t)\overline{k} \label{eq:1}
+\end{equation}
+La linea espacial se describe por las coordenadas del punto material, osea; la línea se da paramétricamente como:
+\begin{equation}
+    x(t),\ y(t),\ z(t) 	\label{eq:2}
+\end{equation}
+y se llama trayectoria del punto material.
+El elemento de la longitud de la trayectoria es:
+\begin{equation}
+    dS = \sqrt{dx^2 + dy^2 + dz^2} \label{eq:3}
+\end{equation}
+El vector elemental $d\overline{r}$  se puede expresar como:
+\begin{equation}
+    d\overline{r} = \overline{n}dS  \label{eq:4}
+\end{equation}
+Donde: $\overline{n}$ es el vector unitario tangente a la trayectoria.\\
+Osea: $\overline{n} = \overline{n}_x + \overline{n}_y + \overline{n}_z$, $n^2 = n^2_x + n^2_y + n^2_z$\\
+Donde: $\overline{n}_x,\ \overline{n}_y,\ \overline{n}_z$ son los componentes del vector $\overline{n}$ en los ejes $x,\ y,\ z$.\\
+La mecánica teórica de los puntos materiales estudia sus movimientos y se divide en cinemática y dinámica.
+\subsection{Fundamentos de la cinemática del punto}
+El movimiento de acuerdo a \eqref{eq:1} y \eqref{eq:2} el punto material tiene la velocidad: 
+\begin{equation*}
+\bar{v} = \dfrac{d\bar{r}}{dt} = \dot{x}\bar{i} + \dot{y}\bar{j} + \dot{z}\bar{k} 
+\end{equation*}
+Donde: $\dot{x} = \dfrac{dx}{dt},\ \dot{y} = \dfrac{dy}{dt},\ \dot{z} = \dfrac{dz}{dt}$, son los componentes cartesianos de la velocidad.
+
+El módulo de la velocidad $\bar{v} $ se define de la relación:
+\begin{equation*}
+v^2 = \dot{x}^2 + \dot{y}^2 + \dot{z}^2 
+\end{equation*}De acuerdo  a \eqref{eq:3} y \eqref{eq:4} la velocidad del punto es:
+\begin{align}
+\bar{v} = \bar{n} \dfrac{dS}{dt} = \bar{n}v \Rightarrow v = \dfrac{dS}{dt} \notag
+\end{align}
+En sistemas de coordenadas diferentes al cartesiano, el vector velocidad es cómodo expresar con sus correspondientes coordenadas bases.
+Por ejemplo en coordenadas cilíndricas el vector velocidad se expresa por sus bases $\bar{n}_\rho,\ \bar{n}_\varphi,\ \bar{n}_z$ $(\bar{e}_\rho,\ \bar{e}_\varphi,\ \bar{e}_z)$.
+
+\vspace{1.5cm}
+
+\begin{minipage}{\textwidth}
+\begin{wrapfigure}{l}{0.45\textwidth}
+\centering
+\begin{tikzpicture}[scale = .4]
+	\tkzDefPoints{0/0/O, 0/10/Z, 10/0/Y, -5/-5/X,
+    							5/-4/a, 5/7/b,
+                                5/8.5/z, 6.3/7.5/p, 6.1/6.12/h,
+                                -1/-1/A1, 0.465/-0.372/B1}
+    
+	%\tkzDrawPoints(a,b)
+    
+    \draw[dashed] (O) -- (a);
+    \draw[dashed] (a) -- (b);
+    \begin{scope}[very thick]
+    	\tkzDrawVector[-Stealth](O,X)
+        \tkzDrawVector[-Stealth](O,Y)
+        \tkzDrawVector[-Stealth](O,Z)
+        
+        \tkzDrawVector[-Stealth](b,z)
+        \tkzDrawVector[-Stealth](b,p)
+        \tkzDrawVector[-Stealth](b,h)
+
+       \end{scope}
+       %
+       \tkzMarkAngle(A1,O,B1)
+       
+ 	\tkzLabelPoint(X){\(X\)}
+    \tkzLabelPoint(Y){\(Y\)}
+    \tkzLabelPoint(Z){\(Z\)}
+    %
+    \tkzLabelPoint[below right](A1){$\varphi$}
+    %
+    \tkzLabelPoint[above](z){$\overline{n}_z$}
+    \tkzLabelPoint[right](p){$\overline{n}_\varphi$}
+    \tkzLabelPoint(h){$\overline{n}_\rho$}
+    %
+    \tkzLabelLine[below](O,a){$\rho$}
+\end{tikzpicture}
+\end{wrapfigure}
+%%%
+\textbf{En coordenadas cilíndricas}
+\begin{align}
+	\bar{v} &= \dot{\rho} \bar{n}_\rho + \rho \dot{\varphi}\bar{n}_\varphi + \dot{z}\bar{n}_z \notag \\
+    \rho^2 &= x^2 + y^2 \notag
+\end{align}
+\end{minipage}
+
+\vspace{5cm}
+
+%%%%%%%%%%
+\begin{minipage}{\textwidth}
+\begin{wrapfigure}{l}{0.55\textwidth}
+\centering
+\begin{tikzpicture}[scale = .4]
+	\tkzDefPoints{0/0/O, 0/10/Z, 10/0/Y, -5/-5/X,
+    							5/-4/a, 5/7/b,
+                                6.2/8.2/z, 6.7/7.1/p, 6/5.7/h,
+                                -1/-1/A1, 0.465/-0.372/B1,
+                                0/2/A2, 0.6/0.86/B2}
+    
+	%\tkzDrawPoints(a,b)
+    
+    \draw[dashed] (O) -- (a);
+    \draw[dashed] (a) -- (b);
+    \begin{scope}[very thick]
+    	\tkzDrawVector[-Stealth](O,X)
+        \tkzDrawVector[-Stealth](O,Y)
+        \tkzDrawVector[-Stealth](O,Z)
+        
+        \tkzDrawVector[-Stealth](b,z)
+        \tkzDrawVector[-Stealth](b,p)
+        \tkzDrawVector[-Stealth](b,h)
+        
+        \tkzDrawVector[-Stealth](O,b)
+
+       \end{scope}
+       %
+       \tkzMarkAngle(A1,O,B1)
+       \tkzMarkAngle[size = 2](B2,O,A2)
+       
+ 	\tkzLabelPoint(X){\(X\)}
+    \tkzLabelPoint(Y){\(Y\)}
+    \tkzLabelPoint(Z){\(Z\)}
+    %
+    \tkzLabelPoint[below right](A1){$\varphi$}
+    \tkzLabelPoint[above right](A2){$\theta$}
+    %
+    \tkzLabelPoint[above](z){$\overline{n}_r$}
+    \tkzLabelPoint[right](p){$\overline{n}\varphi$}
+    \tkzLabelPoint(h){$\overline{n}_\theta$}
+    %
+    \tkzLabelLine[above](O,b){$r$}
+\end{tikzpicture}
+\end{wrapfigure}
+
+%\vspace{2cm}
+\textbf{En coordenadas esféricas}
+\begin{align}
+\bar{v} &= \dot{r}\bar{n}_r + r\dot{\theta}\bar{n}_\theta + r\sen \theta\dot{\varphi}\bar{n}_\varphi \notag \\
+r^2 &= x^2 + y^2 + z^2\notag
+\end{align}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{minipage}
+
+\newpage
+La aceleración del punto material se define como: $\bar{a} = \dfrac{d\bar{v}}{dt} = \dfrac{d^2\bar{r}}{dt^2} $ \ \ o \ \ $\bar{a} = \ddot{x}\bar{i} + \ddot{y}\bar{j} + \ddot{z}\bar{k}$ 
+
+\section{Cinemática del punto en coordenadas curvilíneas}
+La posición del punto material $\bar{r} = (x,\ y,\ z)$ también se puede dar a travez de otras coordenadas: $q_1,\ q_2,\ q_3$; osea:
+\begin{equation*}
+x = x(q_1,\ q_2,\ q_3),\ \ y = y(q_1,\ q_2,\ q_3), \ \ z = z(q_1,\ q_2,\ q_3)
+\end{equation*}
+Para la correspondencia entre las nuevas coordenadas y las coordenadas cartesianas fuesen mutuamente correspondiente, se debe cumplir que el Jacobiano: \textbf{J} $\neq 0$
+Si un punto material se mueve, osea $\bar{r}(t)$, 	entonces las nuevas coordenadas son funciones del tiempo:
+\begin{equation*}
+q_1 = q_1(t),\ q_2 = q_2(t),\ q_3 = q_3(t)
+\end{equation*}
+De la formula (expresión) de cambios de variables $\bar{r} = \bar{r}(q_1,\ q_2,\ q_3)$ por turnos, cada una de las variables $q_k$ en calidad de parámetro. Se obtiene 3 familias de curvas, que se llaman lineas coordenadas.
+Las mismas coordenadas $q_k$ se llaman coordenadas curvilíneas. \\
+
+\vspace{1cm}
+\begin{minipage}{\textwidth}
+\begin{wrapfigure}{l}{0.4\textwidth}
+\centering
+\begin{tikzpicture}[scale = .4]
+\tkzDefPoints{0/0/O, 0/10/Z, 10/0/Y, -5/-5/X,
+    							5/-4/a, 5/7/b,
+                                5.5/8.5/z, 3.5/6.3/p, 6.2/5.9/h,
+                                0/2.1/uy, 2.1/0/uz, -1.5/-1.5/ux}
+    
+    \begin{scope}[very thick]
+    	\tkzDrawVector[-Stealth](O,X)
+        \tkzDrawVector[-Stealth](O,Y)
+        \tkzDrawVector[-Stealth](O,Z)
+        
+        \tkzDrawVector[-Stealth](b,z)
+        \tkzDrawVector[-Stealth](b,p)
+        \tkzDrawVector[-Stealth](b,h)
+        \tkzDrawPoint[size = 2, fill = black](b)
+        
+        \tkzDrawVector[-Stealth](O,ux)
+        \tkzDrawVector[-Stealth](O,uy)
+        \tkzDrawVector[-Stealth](O,uz)
+
+       \end{scope}
+       %
+       
+ 	\tkzLabelPoint(X){\(X\)}
+    \tkzLabelPoint(Y){\(Y\)}
+    \tkzLabelPoint(Z){\(Z\)}
+    %
+    \tkzLabelPoint[above left](ux){$\overline{i}$}
+    \tkzLabelPoint[right](uy){$\overline{k}$}
+    \tkzLabelPoint[below left](uz){$\overline{j}$}
+    %
+    \tkzLabelPoint[above](z){$\overline{e}_3$}
+    \tkzLabelPoint[left](p){$\overline{e}_1$}
+    \tkzLabelPoint(h){$\overline{e}_2$}
+    %
+\end{tikzpicture}
+\end{wrapfigure}
+Veamos las lineas coordenadas en un momento dado. Los vectores que se definen por la dirección de otras tangentes, se expresan así:
+\begin{align}
+    \dfrac{\partial \bar{r}}{\partial q_1} = \dfrac{\partial x}{\partial q_1} \bar{i} + \dfrac{\partial y}{\partial q_1} \bar{j} + \dfrac{\partial z}{\partial q_1} \bar{k} = H_1  \cdot \bar{e}_1 \notag \\
+    \dfrac{\partial \bar{r}}{\partial q_2} = \dfrac{\partial x}{\partial q_2} \bar{i} + \dfrac{\partial y}{\partial q_2} \bar{j} + \dfrac{\partial z}{\partial q_2} \bar{k} = H_2  \cdot \bar{e}_2 \notag \\
+    \dfrac{\partial \bar{r}}{\partial q_3} = \dfrac{\partial x}{\partial q_3} \bar{i} + \dfrac{\partial y}{\partial q_3} \bar{j} + \dfrac{\partial z}{\partial q_3} \bar{k} = H_3  \cdot \bar{e}_3 \notag 
+\end{align}
+\end{minipage}
+\vspace{2.54cm}
+
+
+Los coeficientes $H_k,\ (k = 1,\ 2,\ 3)$ presentan la norma de los vectores $\dfrac{\partial \bar{r}}{\partial q_k}$ y los vectores $\bar{e}_k$ son los vectores unitarios de las direcciones  de los vectores dados:
+\begin{equation*}
+    H_k = \sqrt{\left( \dfrac{\partial x}{\partial q_k} \right)^2 + \left( \dfrac{\partial y}{\partial q_k} \right)^2 + \left( \dfrac{\partial z}{\partial q_k} \right)^2 }
+\end{equation*}
+Estos coeficientes se llaman ``Coeficientes de Lame''. Las coordenadas curvilíneas se llaman ortogonales, si los siguientes productos escalares son iguales a ``cero'':
+\begin{equation*}
+    (\bar{e}_1\cdot \bar{e}_2) = (\bar{e}_2\cdot \bar{e}_3) = (\bar{e}_3\cdot \bar{e}_1) = 0
+\end{equation*}
+Estas condiciones son equivalentes a las siguientes:
+\begin{equation*}
+    \dfrac{\partial x}{\partial q_l}\cdot \dfrac{\partial x}{\partial q_m} + \dfrac{\partial y}{\partial q_l}\cdot \dfrac{\partial y}{\partial q_m} + \dfrac{\partial z}{\partial q_l}\cdot \dfrac{\partial z}{\partial q_m} = 0, \ \  l \neq m
+\end{equation*}
+La diferencial de una linea curva arbitraria:
+\begin{equation*}
+    dS^2 = dx^2 + dy^2 + dz^2
+\end{equation*}
+Puede ser expresado a través de las diferenciales de las coordenadas curvilineas:
+\begin{align}
+    dx = \dfrac{\partial x}{\partial q_1} dq_1 + \dfrac{\partial x}{\partial q_2} dq_2  + \dfrac{\partial x}{\partial q_3} dq_3 \notag \\ 
+    dy = \dfrac{\partial y}{\partial q_1} dq_1 + \dfrac{\partial y}{\partial q_2} dq_2  + \dfrac{\partial y}{\partial q_3} dq_3 \notag \\ 
+    dz = \dfrac{\partial z}{\partial q_1} dq_1 + \dfrac{\partial z}{\partial q_2} dq_2  + \dfrac{\partial z}{\partial q_3} dq_3 \notag
+\end{align}
+Este resultado se puede llevar a la forma cuadrática:
+\begin{equation*}
+    dS^2 = g_{lm} dq_l\cdot dq_m
+\end{equation*}
+A esto se le llama la métrica del espacio, expresado en coordenadas $q_k$ (Por los índices $l$ y $m$ se supone que es la suma: $l,\ m = 1,\ 2,\ 3$) Si el sistema de coordenadas curvilíneas es ortogonal, entonces la métrica es diagonal y tiene la expresión:
+\begin{equation*}
+    dS^2 = H^2_1dq^2_1 + H^2_2dq^2_2 + H^2_3dq^2_3
+\end{equation*}
+Hallemos la velocidad de un punto que se mueve:
+\begin{equation*}
+    \bar{v} = \dfrac{d\bar{r}}{dt} = \dfrac{\partial \bar{r}}{\partial q_1} \dot{q}_1 + \dfrac{\partial \bar{r}}{\partial q_2} \dot{q}_2 + \dfrac{\partial \bar{r}}{\partial q_3} \dot{q}_3 = H_1 \dot{q}_1 \bar{e}_1 + H_2 \dot{q}_2 \bar{e}_2 + H_3 \dot{q}_3 \bar{e}_3
+\end{equation*}
+La velocidad también se puede expresar como:
+\begin{equation*}
+    \bar{v} = v_1\bar{e}_1 + v_2\bar{e}_2 + v_3\bar{e}_3
+\end{equation*}
+con los componentes: $v_k = H_k q_k$
+\subsection{El módulo de la velocidad}
+\begin{equation*}
+    v = \sqrt{\bar{v}\cdot \bar{v}} = \sqrt{(H_1 \dot{q}_1 \bar{e}_1 + H_2 \dot{q}_2 \bar{e}_2 + H_3 \dot{q}_3 \bar{e}_3)^2}
+\end{equation*}
+Si las coordenadas curvilíneas son ortogonales, entones esta expresión toma la forma:
+\begin{equation*}
+    v = \sqrt{H^2_1\dot{q}^2_1 + H^2_2\dot{q}^2_2 + H^2_3\dot{q}^2_3} = \sqrt{v^2_1 + v^2_2 + v^2_3}
+\end{equation*}
+\textbf{Ejemplo: Coordenadas cilíndricas}
+
+\begin{align*}
+    &(x,\ y,\ z) \rightarrow (\alpha,\ \rho,\ z)\\
+    x &= \rho \cos \alpha &\Rightarrow  \frac{\partial x}{\partial \alpha} &= -\rho \sen \alpha & \frac{\partial y}{\partial \alpha} &= \rho \cos \alpha & \frac{\partial z}{\partial \alpha} &= 0\\
+    y &= \rho \sen \alpha &\Rightarrow  \frac{\partial x}{\partial \rho} &= \cos \alpha & \frac{\partial y}{\partial \rho} &= \sen \alpha & \frac{\partial z}{\partial \rho} &= 0\\
+    z &= z  &\Rightarrow  \frac{\partial x}{\partial z} &= 0 & \frac{\partial y}{\partial z} &= 0 & \frac{\partial z}{\partial z} &= 1
+\end{align*}
+
+\begin{align*}
+    H_1 & = \sqrt{(-\rho\sen\alpha)^2 + (\rho\cos\alpha)^2 + 0^2} = \rho &\rightarrow   H_1 &= \rho \\
+    H_2 & = \sqrt{(\cos\alpha)^2 + (\sen\alpha)^2 + 0^2} = 1 &\rightarrow  H_2 &= 1 \\
+    H_3 & = \sqrt{0^2 + 0^2 + 1^2} = 1 &\rightarrow  H_3 &= 1 
+\end{align*}
+\begin{align*}
+    v &= H_1 \dot{q}_1 \bar{e}_1 + H_2 \dot{q}_2 \bar{e}_2 + H_3 \dot{q}_3 \bar{e}_3\\
+    v &= \rho\dot{\alpha}\bar{n}_\alpha + \dot{\rho}\bar{n}_\rho + \dot{z}\bar{n}_z
+\end{align*}
+\vspace{1cm}
+\begin{minipage}{\textwidth}
+\begin{wrapfigure}{l}{0.4\textwidth}
+\centering
+\begin{tikzpicture}[scale = .4]
+\tkzDefPoints{0/0/O, 0/10/Z, 10/0/Y, -5/-5/X,
+    							5/-4/a, 5/7/b,
+                                5.5/8.5/z, 3.5/6.3/p, 6.2/5.9/h
+                                -1/-1/A1, 2.5/0/B1}
+    
+    \begin{scope}[very thick]
+    	\tkzDrawVector[-Stealth](O,X)
+        \tkzDrawVector[-Stealth](O,Y)
+        \tkzDrawVector[-Stealth](O,Z)
+        
+        \draw[dashed] (O) -- (a);
+        \draw[dashed] (O) -- (b);
+        
+        \tkzMarkAngle(X,O,a)
+        \tkzMarkAngle[size=2](a,O,b)
+
+       \end{scope}
+       %
+       
+ 	\tkzLabelPoint(X){\(X\)}
+    \tkzLabelPoint(Y){\(Y\)}
+    \tkzLabelPoint(Z){\(Z\)}
+    
+    \tkzLabelPoint(A1){$\varphi$}
+    \tkzLabelPoint[above](B1){$\theta$}
+    %
+\end{tikzpicture}
+\end{wrapfigure}\textbf{Coordenadas esféricas}
+\begin{align*}
+    0 \leq \varphi \leq 2\pi\\
+    -\dfrac{\pi}{2} \leq \theta \leq \dfrac{\pi}{2}\\
+    0 \leq r \leq \infty
+\end{align*}
+\end{minipage}
+\newpage
+\begin{align*}
+&(x,\ y,\ z)\rightarrow  (\varphi,\ \theta,\ r)\\
+    x &= r\cos\varphi\cos\theta &\Rightarrow \frac{\partial x}{\partial \varphi} &= -r\sen\varphi\cos\theta & \frac{\partial y}{\partial\varphi} &= r\cos\varphi\cos\theta & \frac{\partial z}{\partial\varphi} &= 0\\
+    y &= r\sen\varphi\cos\theta &\Rightarrow \frac{\partial x}{\partial\theta} &= -r\cos\varphi\sen\theta & \frac{\partial y}{\partial\theta} &= -r\sen\varphi\sen\theta & \frac{\partial z}{\partial\theta} &= r\cos\theta\\
+    z &= r\sen\theta &\Rightarrow \frac{\partial z}{\partial r} &= \cos\varphi\cos\theta & \frac{\partial y}{\partial r} &= \sen\varphi\cos\theta & \frac{\partial z}{\partial r} &= \sen\theta
+\end{align*}
+\begin{align*}
+    H_1 &= \sqrt{(-r\sen\varphi\cos\theta)^2 + (r\cos\varphi\cos\theta)^2 + 0^2} = r\cos\theta &\rightarrow H_1 &= r\cos\theta\\
+    H_2 &= \sqrt{(-r\cos\varphi\sen\theta)^2 + (-r\sen\varphi\sen\theta)^2 + (r\cos\theta)^2} = r &\rightarrow H_2 &= r\\
+    H_3 &= \sqrt{(\cos\varphi\cos\theta)^2 + (\sen\varphi\cos\theta)^2 + (\sen\theta)^2} = 1 &\rightarrow H_3 &= 1
+\end{align*}
+%%%%%%%%%%%%%%
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
